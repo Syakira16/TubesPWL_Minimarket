@@ -31,9 +31,9 @@ Route::middleware(['auth', 'role:Owner'])->group(function () {
         return view('products.index');
     })->name('products.index');
 
-    Route::get('/employees', function () {
-        return view('employees.index');
-    })->name('employees.index');
+    Route::get('/employess', function () {
+        return view('employess.index');
+    })->name('employess.index');
 });
 
 Route::middleware(['auth', 'role:Cashier'])->group(function () {
@@ -43,6 +43,7 @@ Route::middleware(['auth', 'role:Cashier'])->group(function () {
 });
 
 Route::middleware(['auth', 'role:Warehouse Staff'])->group(function () {
+
     Route::get('/stock-in', function () {
         return "Barang Masuk";
     });

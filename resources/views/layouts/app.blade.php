@@ -1,124 +1,114 @@
-{{-- <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
-    </body>
-</html> --}}
-
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Minimarket Management</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-gray-100">
-<div class="flex min-h-screen">
-    <aside class="w-64 bg-slate-900 text-white">
-
-    <div class="p-5 border-b border-slate-700">
-
-        <h1 class="text-xl font-bold">
-            🏪 Minimarket
-        </h1>
-
-        <p class="text-sm text-gray-300">
-            Management System
-        </p>
-
-    </div>
-
-    <nav class="mt-4">
-
-        <a href="{{ route('dashboard') }}"
-           class="block px-5 py-3 hover:bg-slate-700">
-            Dashboard
-        </a>
-
-        <a href="{{ route('branches.index') }}"
-           class="block px-5 py-3 hover:bg-slate-700">
-            Cabang
-        </a>
-
-        <a href="{{ route('categories.index') }}"
-           class="block px-5 py-3 hover:bg-slate-700">
-            Kategori
-        </a>
-
-        <a href="{{ route('products.index') }}"
-           class="block px-5 py-3 hover:bg-slate-700">
-            Produk
-        </a>
-
-        <a href="{{ route('employees.index') }}"
-           class="block px-5 py-3 hover:bg-slate-700">
-            Pegawai
-        </a>
-    </nav>
-</aside>
-
-    <main class="flex-1">
-        <header class="bg-white shadow px-6 py-4 flex justify-between">
-            <div>
-                <h1 class="font-bold text-2xl">
-                    Dashboard
+<body class="bg-gray-100 text-gray-800 font-[Poppins]">
+    <div class="flex min-h-screen">
+        <aside class="w-72 bg-slate-800 text-white flex flex-col shadow-2xl font-[Poppins]">
+            <div class="px-6 py-5 border-b border-slate-700">
+                <h1 class="text-xl font-bold tracking-wide">
+                    🏪 Minimarket
                 </h1>
+                <p class="text-xs text-slate-300 mt-1">
+                    Management System
+                </p>
+            </div>
+            <nav class="flex-1 mt-5 px-3 space-y-1 text-sm">
+                @php
+                    $iconStyle = "w-5 h-5 opacity-90";
+                @endphp
 
-                <p class="text-gray-500">
+                <a href="{{ route('dashboard') }}"
+                class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-slate-700 transition">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1828/1828765.png"
+                        class="{{ $iconStyle }} invert"
+                        alt="dashboard">
+                    Dashboard
+                </a>
+
+                <a href="{{ route('branches.index') }}"
+                class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-slate-700 transition">
+                   <img src="https://cdn-icons-png.flaticon.com/512/2825/2825777.png"
+                        class="{{ $iconStyle }} invert"
+                        alt="branch">
+                    Cabang
+                </a>
+
+                <a href="{{ route('categories.index') }}"
+                class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-slate-700 transition">
+                    <img src="https://cdn-icons-png.flaticon.com/512/11826/11826667.png"
+                        class="{{ $iconStyle }} invert"
+                        alt="category">
+                    Kategori
+                </a>
+
+                <a href="{{ route('products.index') }}"
+                class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-slate-700 transition">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1007/1007988.png"
+                        class="{{ $iconStyle }} invert"
+                        alt="product">
+                    Produk
+                </a>
+
+                <a href="{{ route('employess.index') }}"
+                class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-slate-700 transition">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1769/1769041.png"
+                        class="{{ $iconStyle }} invert"
+                        alt="employee">
+                    Pegawai
+                </a>
+            </nav>
+            <div class="border-t border-slate-700 p-4">
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit"
+                        class="w-full flex items-center justify-center gap-3 bg-slate-700 hover:bg-slate-600 text-white text-sm py-2 rounded-lg transition">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828479.png"
+                            class="w-5 h-5 invert"
+                            alt="logout">
+                        Logout
+                    </button>
+                </form>
+            </div>
+        </aside>
+    <main class="flex-1 flex flex-col">
+        <header class="bg-white shadow-sm px-6 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-gray-800">
+                    @yield('title', 'Dashboard')
+                </h1>
+                <p class="text-sm text-gray-500">
                     Sistem Informasi Minimarket
                 </p>
-
             </div>
 
             <div class="flex items-center gap-4">
-
-                <div>
+                <div class="text-right">
                     <p class="font-semibold">
                         {{ auth()->user()->name }}
                     </p>
 
-                    <p class="text-sm text-gray-500">
+                    <span class="text-xs px-2 py-1 rounded-full bg-blue-100 text-blue-600">
                         {{ auth()->user()->roles->pluck('name')->first() }}
-                    </p>
+                    </span>
+                </div>
+                <div class="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">
+                    {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
                 </div>
             </div>
         </header>
 
-        <div class="p-6">
-            @yield('content')
+        <div class="p-6 flex-1">
+            <div class="bg-white rounded-xl shadow-sm p-6">
+                @yield('content')
+            </div>
         </div>
-
     </main>
 </div>
 
