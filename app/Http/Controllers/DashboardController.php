@@ -14,12 +14,17 @@ class DashboardController extends Controller
     
     public function index()
     {
-        $branches = Branch::all();
         $totalCabang = Branch::count();
         $totalKategori = Category::count();
         $totalProduk = Product::count();
         $totalPegawai = Employee::count();
         $totalTransaksi = Transaction::count();
+
+        $latestBranches = Branch::latest()->take(2)->get();
+        $latestProducts = Product::latest()->take(2)->get();
+        $latestCategory = Category::latest()->take(2)->get();
+        $latestEmployee = Employee::latest()->take(2)->get();
+        $latestTransaction = Transaction::latest()->take(2)->get();
 
         return view('dashboard', compact(
             'totalCabang',
@@ -27,8 +32,12 @@ class DashboardController extends Controller
             'totalProduk',
             'totalPegawai',
             'totalTransaksi',
-            'branches'
+            'latestBranches',
+            'latestProducts',
+            'latestCategory',
+            'latestEmployee',
+            'latestTransaction',
+
         ));
-        
     }
 }

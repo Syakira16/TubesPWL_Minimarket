@@ -46,7 +46,103 @@
             {{ $totalTransaksi }}
         </p>
     </div>
+</div>
 
+<div class="mt-10">
+
+    <h3 class="text-xl font-bold mb-4">
+        Cabang Terbaru
+    </h3>
+
+    <div class="overflow-x-auto">
+        <table class="w-full border">
+
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="border p-3">Kode Cabang</th>
+                    <th class="border p-3">Nama Cabang</th>
+                    <th class="border p-3">Kota</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @forelse($latestBranches as $branch)
+
+                <tr>
+                    <td class="border p-3">
+                        {{ $branch->kode_cabang }}
+                    </td>
+
+                    <td class="border p-3">
+                        {{ $branch->nama_cabang }}
+                    </td>
+
+                    <td class="border p-3">
+                        {{ $branch->kota }}
+                    </td>
+                </tr>
+
+                @empty
+
+                <tr>
+                    <td colspan="3" class="border p-3 text-center">
+                        Belum ada data cabang
+                    </td>
+                </tr>
+
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="mt-10">
+    <h3 class="text-xl font-bold mb-4">
+        Produk Terbaru
+    </h3>
+
+    <div class="overflow-x-auto">
+        <table class="w-full border">
+
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="border p-3">Kode Barang</th>
+                    <th class="border p-3">Nama Produk</th>
+                    <th class="border p-3">Stok</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @forelse($latestProducts as $product)
+
+                <tr>
+                    <td class="border p-3">
+                        {{ $product->kode_barang }}
+                    </td>
+
+                    <td class="border p-3">
+                        {{ $product->nama_barang }}
+                    </td>
+
+                    <td class="border p-3">
+                        {{ $product->stok }}
+                    </td>
+                </tr>
+
+                @empty
+
+                <tr>
+                    <td colspan="3" class="border p-3 text-center">
+                        Belum ada data produk
+                    </td>
+                </tr>
+
+                @endforelse
+            </tbody>
+        </table>
+    </div>
 </div>
 
 @endif

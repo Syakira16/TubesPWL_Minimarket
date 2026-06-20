@@ -15,13 +15,29 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = Faker::create('id_ID');
+          $categories = [
+            'Makanan',
+            'Minuman',
+            'Snack',
+            'Sembako',
+            'Produk Susu',
+            'Makanan Instan',
+            'Peralatan Mandi',
+            'Perawatan Tubuh',
+            'Peralatan Rumah Tangga',
+            'Alat Tulis',
+            'Produk Bayi',
+            'Obat Ringan',
+            'Bumbu Dapur',
+            'Makanan Beku',
+            'Elektronik Kecil'
+        ];
 
-        for ($i = 1; $i <= 15; $i++) {
+        foreach ($categories as $index => $category) {
 
             DB::table('categories')->insert([
-                'kode_kategori' => 'KTG' . str_pad($i, 3, '0', STR_PAD_LEFT),
-                'nama_kategori' => ucfirst($faker->unique()->word()),
+                'kode_kategori' => 'KTG' . str_pad($index + 1, 3, '0', STR_PAD_LEFT),
+                'nama_kategori' => $category,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
