@@ -3,6 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BranchController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,21 +23,14 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'role:Owner'])->group(function () {
-    Route::get('/branches', function () {
-        return view('branches.index');
-    })->name('branches.index');
+    Route::resource('branches', BranchController::class);
+    Route::resource('categories', CategoryController::class);
 
-    Route::get('/categories', function () {
-        return view('categories.index');
-    })->name('categories.index');
+    
 
-    Route::get('/products', function () {
-        return view('products.index');
-    })->name('products.index');
+   Route::resource('products', ProductController::class);
 
-    Route::get('/employess', function () {
-        return view('employess.index');
-    })->name('employess.index');
+    Route::resource('employees', EmployeeController::class);
 });
 
 Route::middleware(['auth', 'role:Cashier'])->group(function () {
