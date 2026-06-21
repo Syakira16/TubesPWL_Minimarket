@@ -55,10 +55,10 @@ public function addToCart(Request $request)
     $cart[] = [
     'kode_barang' => $product->kode_barang,
     'nama_barang' => $product->nama_barang,
-    'harga' => $product->harga,
+    'harga' => $product->harga_jual,
     'jumlah' => $request->jumlah,
     'subtotal' =>
-    $product->harga *
+    $product->harga_jual *
     $request->jumlah
     ];
 
@@ -120,7 +120,7 @@ public function store(Request $request)
     TransactionDetail::create([
         'transaction_id' => $transaction->id,
         'kode_barang' => $item['kode_barang'],
-        'jumlah' => $item['jumlah'],
+        'qty' => $item['jumlah'],
         'harga' => $item['harga'],
         'subtotal' => $item['subtotal']
     ]);
