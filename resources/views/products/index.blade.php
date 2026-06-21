@@ -59,7 +59,7 @@
             </td>
 
             <td class="border p-3">
-                Rp {{ number_format($product->harga,0,',','.') }}
+                Rp {{ number_format($product->harga_jual,0,',','.') }}
             </td>
 
             <td class="border p-3">

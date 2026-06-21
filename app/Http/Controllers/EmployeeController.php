@@ -2,82 +2,85 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Branch;
-
+use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
     public function index()
-{
-$employees = Employee::with('branch')->get();
+    {
+        $employees = Employee::with('branch')->get();
 
-return view(
-'employees.index',
-compact('employees')
-);
-}
+        return view(
+            'employess.index',
+            compact('employees')
+        );
+    }
 
-public function create()
-{
-$branches = Branch::all();
+    public function create()
+    {
+        $branches = Branch::all();
 
-return view(
-'employees.create',
-compact('branches')
-);
-}
+        return view(
+            'employess.create',
+            compact('branches')
+        );
+    }
 
-public function store(Request $request)
-{
-$request->validate([
-'kode_pegawai' => 'required|unique:employees',
-'kode_cabang' => 'required',
-'nama_pegawai' => 'required',
-'jenis_kelamin' => 'required',
-]);
+    public function store(Request $request)
+    {
+        Employee::create([
+            'kode_pegawai' => $request->kode_pegawai,
+            'kode_cabang' => $request->kode_cabang,
+            'nama_pegawai' => $request->nama_pegawai,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'no_telp' => $request->no_telp,
+            'alamat' => $request->alamat,
+        ]);
 
-Employee::create($request->all());
+        return redirect()
+            ->route('employess.index')
+            ->with('success', 'Pegawai berhasil ditambahkan');
+    }
 
-return redirect()
-->route('employees.index')
-->with('success', 'Pegawai berhasil ditambahkan');
-}
+    public function edit($kode_pegawai)
+    {
+        $employee = Employee::findOrFail($kode_pegawai);
 
-public function edit(string $kode_pegawai)
-{
-$employee = Employee::findOrFail($kode_pegawai);
+        $branches = Branch::all();
 
-$branches = Branch::all();
+        return view(
+            'employess.edit',
+            compact('employee', 'branches')
+        );
+    }
 
-return view(
-'employees.edit',
-compact('employee', 'branches')
-);
-}
+    public function update(Request $request, $kode_pegawai)
+    {
+        $employee = Employee::findOrFail($kode_pegawai);
 
-public function update(
-Request $request,
-string $kode_pegawai
-) {
-$employee = Employee::findOrFail($kode_pegawai);
+        $employee->update([
+            'kode_cabang' => $request->kode_cabang,
+            'nama_pegawai' => $request->nama_pegawai,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'no_telp' => $request->no_telp,
+            'alamat' => $request->alamat,
+        ]);
 
-$employee->update($request->all());
+        return redirect()
+            ->route('employess.index')
+            ->with('success', 'Pegawai berhasil diupdate');
+    }
 
-return redirect()
-->route('employees.index')
-->with('success', 'Pegawai berhasil diubah');
-}
+    public function destroy($kode_pegawai)
+    {
+        $employee = Employee::findOrFail($kode_pegawai);
 
-public function destroy(string $kode_pegawai)
-{
-Employee::findOrFail($kode_pegawai)
-->delete();
+        $employee->delete();
 
-return redirect()
-->route('employees.index')
-->with('success', 'Pegawai berhasil dihapus');
-}
-
+        return redirect()
+            ->route('employess.index')
+            ->with('success', 'Pegawai berhasil dihapus');
+    }
 }

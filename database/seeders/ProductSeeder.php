@@ -20,7 +20,7 @@ public function run(): void
                 'kode_barang' => 'BRG001',
                 'kode_kategori' => 'KTG001',
                 'nama_barang' => 'Indomie Goreng',
-                'harga_jual' => 3500,
+                'harga' => 3500,
                 'stok' => 50
             ],
 
@@ -28,7 +28,7 @@ public function run(): void
                 'kode_barang' => 'BRG002',
                 'kode_kategori' => 'KTG001',
                 'nama_barang' => 'Mie Sedaap Soto',
-                'harga_jual' => 3200,
+                'harga' => 3200,
                 'stok' => 40
             ],
 
@@ -36,7 +36,7 @@ public function run(): void
                 'kode_barang' => 'BRG003',
                 'kode_kategori' => 'KTG002',
                 'nama_barang' => 'Aqua 600ml',
-                'harga_jual' => 4000,
+                'harga' => 4000,
                 'stok' => 100
             ],
 
@@ -44,7 +44,7 @@ public function run(): void
                 'kode_barang' => 'BRG004',
                 'kode_kategori' => 'KTG002',
                 'nama_barang' => 'Le Minerale 600ml',
-                'harga_jual' => 3500,
+                'harga' => 3500,
                 'stok' => 90
             ],
 
@@ -52,7 +52,7 @@ public function run(): void
                 'kode_barang' => 'BRG005',
                 'kode_kategori' => 'KTG003',
                 'nama_barang' => 'Teh Botol Sosro',
-                'harga_jual' => 5000,
+                'harga' => 5000,
                 'stok' => 60
             ],
 
@@ -60,7 +60,7 @@ public function run(): void
                 'kode_barang' => 'BRG006',
                 'kode_kategori' => 'KTG003',
                 'nama_barang' => 'Pocari Sweat',
-                'harga_jual' => 9000,
+                'harga' => 9000,
                 'stok' => 45
             ],
 
@@ -68,7 +68,7 @@ public function run(): void
                 'kode_barang' => 'BRG007',
                 'kode_kategori' => 'KTG004',
                 'nama_barang' => 'Beras Ramos 5 Kg',
-                'harga_jual' => 78000,
+                'harga' => 78000,
                 'stok' => 20
             ],
 
@@ -76,14 +76,14 @@ public function run(): void
                 'kode_barang' => 'BRG008',
                 'kode_kategori' => 'KTG005',
                 'nama_barang' => 'Gula Gulaku 1 Kg',
-                'harga_jual' => 18000,
+                'harga' => 18000,
                 'stok' => 35
             ],
 [
                 'kode_barang' => 'BRG009',
                 'kode_kategori' => 'KTG006',
                 'nama_barang' => 'Minyak Bimoli 1L',
-                'harga_jual' => 22000,
+                'harga' => 22000,
                 'stok' => 25
             ],
 
@@ -91,7 +91,7 @@ public function run(): void
                 'kode_barang' => 'BRG010',
                 'kode_kategori' => 'KTG007',
                 'nama_barang' => 'Rinso Anti Noda',
-                'harga_jual' => 15000,
+                'harga' => 15000,
                 'stok' => 15
             ]
 

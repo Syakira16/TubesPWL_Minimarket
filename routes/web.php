@@ -35,7 +35,7 @@ Route::middleware(['auth', 'role:Owner'])->group(function () {
 
    Route::resource('products', ProductController::class);
 
-    Route::resource('employees', EmployeeController::class);
+    Route::resource('employess', EmployeeController::class);
 
     Route::get('/reports/sales',[ReportController::class,'sales'])->name('reports.sales');
     Route::get('/reports/stock',[ReportController::class,'stock'])->name('reports.stock');

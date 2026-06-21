@@ -1,39 +1,38 @@
 @extends('layouts.app')
 
-@section('title','Edit Pegawai')
+@section('title', 'Edit Pegawai')
 
 @section('content')
 
-<h2 class="text-2xl font-bold mb-6">
+<h2 class="text-2xl font-bold mb-5">
     Edit Pegawai
 </h2>
 
-<form action="{{ route('employees.update', $employee->kode_pegawai) }}"
+<form action="{{ route('employess.update', $employee->kode_pegawai) }}"
       method="POST">
 
     @csrf
     @method('PUT')
 
     <div class="mb-4">
-        <label class="block mb-2">
-            Kode Pegawai
-        </label>
+
+        <label>Kode Pegawai</label>
 
         <input
             type="text"
             value="{{ $employee->kode_pegawai }}"
             readonly
-            class="w-full border rounded p-2 bg-gray-100">
+            class="w-full border p-2 rounded">
+
     </div>
 
     <div class="mb-4">
-        <label class="block mb-2">
-            Cabang
-        </label>
+
+        <label>Cabang</label>
 
         <select
             name="kode_cabang"
-            class="w-full border rounded p-2">
+            class="w-full border p-2 rounded">
 
             @foreach($branches as $branch)
 
@@ -48,41 +47,36 @@
             @endforeach
 
         </select>
+
     </div>
 
     <div class="mb-4">
 
-        <label class="block mb-2">
-            Nama Pegawai
-        </label>
+        <label>Nama Pegawai</label>
 
         <input
             type="text"
             name="nama_pegawai"
             value="{{ $employee->nama_pegawai }}"
-            class="w-full border rounded p-2">
+            class="w-full border p-2 rounded">
 
     </div>
 
     <div class="mb-4">
 
-        <label class="block mb-2">
-            Jenis Kelamin
-        </label>
+        <label>Jenis Kelamin</label>
 
         <select
             name="jenis_kelamin"
-            class="w-full border rounded p-2">
+            class="w-full border p-2 rounded">
 
-            <option
-                value="L"
-                {{ $employee->jenis_kelamin == 'L' ? 'selected' : '' }}>
+            <option value="Laki-Laki"
+                {{ $employee->jenis_kelamin == 'Laki-Laki' ? 'selected' : '' }}>
                 Laki-Laki
             </option>
 
-            <option
-                value="P"
-                {{ $employee->jenis_kelamin == 'P' ? 'selected' : '' }}>
+            <option value="Perempuan"
+                {{ $employee->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>
                 Perempuan
             </option>
 
@@ -92,33 +86,28 @@
 
     <div class="mb-4">
 
-        <label class="block mb-2">
-            No Telepon
-        </label>
+        <label>No Telepon</label>
 
         <input
             type="text"
             name="no_telp"
             value="{{ $employee->no_telp }}"
-            class="w-full border rounded p-2">
+            class="w-full border p-2 rounded">
 
     </div>
 
     <div class="mb-4">
 
-        <label class="block mb-2">
-            Alamat
-        </label>
+        <label>Alamat</label>
 
         <textarea
             name="alamat"
-            class="w-full border rounded p-2">{{ $employee->alamat }}</textarea>
+            class="w-full border p-2 rounded">{{ $employee->alamat }}</textarea>
 
     </div>
 
     <button
-        type="submit"
-        class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+        class="bg-blue-500 text-white px-4 py-2 rounded">
 
         Update
 

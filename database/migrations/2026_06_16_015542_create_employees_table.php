@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('kode_pegawai')->primary();
             $table->string('kode_cabang');
             $table->string('nama_pegawai');
-            $table->enum('jenis_kelamin', ['L', 'P']);
+            $table->enum('jenis_kelamin', ['Laki-Laki', 'Perempuan']);
             $table->string('no_telp')->nullable();
             $table->text('alamat')->nullable();
 
