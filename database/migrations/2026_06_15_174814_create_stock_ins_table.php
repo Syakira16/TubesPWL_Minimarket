@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('stock_ins', function (Blueprint $table) {
             $table->id();
-            $table->string('no_barang_masuk')->unique();
             $table->string('kode_barang');
             $table->integer('jumlah');
-            $table->date('tanggal_masuk');
+            $table->date('tanggal');
             $table->timestamps();
 
             $table->foreign('kode_barang')
                 ->references('kode_barang')
-                ->on('products');
+                ->on('products')
+                ->onDelete('cascade');
+
                 });
     }
 
