@@ -12,21 +12,24 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('transaction_details', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_barang');
-            $table->integer('jumlah');
-            $table->decimal('harga', 12, 2);
-            $table->decimal('subtotal', 12, 2);
-            $table->timestamps();
+              $table->id();
+              $table->unsignedBigInteger('transaction_id');
+              $table->string('kode_barang');
+              $table->integer('qty');
+              $table->decimal('harga',12,2);
+              $table->decimal('subtotal',12,2);
+              $table->timestamps();
 
-            $table->foreign('id')
-                ->references('id')
-                ->on('transactions')
-                ->onDelete('cascade');
+              $table->foreign('transaction_id')
+              ->references('id')
+              ->on('transactions')
+              ->onDelete('cascade');
 
-            $table->foreign('kode_barang')
-                ->references('kode_barang')
-                ->on('products');
+              $table->foreign('kode_barang')
+              ->references('kode_barang')
+              ->on('products')
+              ->onDelete('cascade');
+
         });
     }
 

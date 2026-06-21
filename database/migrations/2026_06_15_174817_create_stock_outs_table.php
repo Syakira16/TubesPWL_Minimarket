@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('stock_outs', function (Blueprint $table) {
             $table->id();
-            $table->string('no_barang_keluar')->unique();
             $table->string('kode_barang');
             $table->integer('jumlah');
-            $table->date('tanggal_keluar');
+            $table->date('tanggal');
             $table->timestamps();
 
             $table->foreign('kode_barang')
-                ->references('kode_barang')
-                ->on('products');
+                  ->references('kode_barang')
+                  ->on('products')
+                  ->onDelete('cascade');
+
                 });
     }
 

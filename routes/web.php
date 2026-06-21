@@ -7,6 +7,11 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\StockInController;
+use App\Http\Controllers\StockOutController;
+use App\Http\Controllers\ReportController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,23 +36,36 @@ Route::middleware(['auth', 'role:Owner'])->group(function () {
    Route::resource('products', ProductController::class);
 
     Route::resource('employees', EmployeeController::class);
+
+    Route::get('/reports/sales',[ReportController::class,'sales'])->name('reports.sales');
+    Route::get('/reports/stock',[ReportController::class,'stock'])->name('reports.stock');
 });
 
 Route::middleware(['auth', 'role:Cashier'])->group(function () {
-    Route::get('/transactions', function () {
-        return "Halaman Transaksi";
-    });
+
+    Route::get('/transactions',[TransactionController::class,'index'])->name('transactions.index');
+    Route::get('/transactions/create',[TransactionController::class,'create'])
+    ->name('transactions.create');
+
+    Route::post('/transactions/add-cart',[TransactionController::class,'addToCart'])
+    ->name('transactions.add-cart');
+
+    Route::get('/transactions/remove-cart/{index}',[TransactionController::class,'removeCart'])
+    ->name('transactions.remove-cart');
+
+    Route::post('/transactions/store',[TransactionController::class,'store'])
+    ->name('transactions.store');
+
+    Route::get('/transactions/{id}',[TransactionController::class,'show'])
+    ->name('transactions.show');
 });
+
 
 Route::middleware(['auth', 'role:Warehouse Staff'])->group(function () {
 
-    Route::get('/stock-in', function () {
-        return "Barang Masuk";
-    });
-
-    Route::get('/stock-out', function () {
-        return "Barang Keluar";
-    });
+    Route::resource('stock-ins',StockInController::class);
+    Route::resource('stock-outs',StockOutController::class);
 });
+
 
 require __DIR__.'/auth.php';
