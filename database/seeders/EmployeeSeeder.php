@@ -18,7 +18,7 @@ class EmployeeSeeder extends Seeder
             'kode_pegawai' => 'PGW001',
             'kode_cabang' => 'CBG001',
             'nama_pegawai' => 'Budi Santoso',
-            'jenis_kelamin' => 'L',
+            'jenis_kelamin' => 'Laki-Laki',
             'no_telp' => '081234567890',
             'alamat' => 'Bandung',
             'created_at' => now(),

@@ -15,8 +15,7 @@ return new class extends Migration
             $table->string('kode_barang')->primary();
             $table->string('kode_kategori');
             $table->string('nama_barang');
-            $table->decimal('harga_beli', 12, 2);
-            $table->decimal('harga_jual', 12, 2);
+            $table->decimal('harga', 12, 2);
             $table->integer('stok')->default(0);
             $table->timestamps();
 
