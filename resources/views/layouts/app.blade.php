@@ -77,13 +77,21 @@
                         Laporan
                     </p>
 
-                   <a href="{{ route('employess.index') }}"
+                  <a href="{{ route('reports.sales') }}"
                     class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-slate-700 transition">
                     <img src="https://cdn-icons-png.flaticon.com/512/10074/10074955.png"
                         class="{{ $iconStyle }} invert"
                         alt="sales-report">
                     Laporan Penjualan
                 </a>
+                  <a href="{{ route('reports.stock') }}"
+                    class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-slate-700 transition">
+                    <img src="https://cdn-icons-png.flaticon.com/512/10074/10074955.png"
+                        class="{{ $iconStyle }} invert"
+                        alt="sales-report">
+                    Laporan Stock
+                  </a>
+
             </nav>
             <div class="border-t border-slate-700 p-4">
                 <form method="POST" action="{{ route('logout') }}">
